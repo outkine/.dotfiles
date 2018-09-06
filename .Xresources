@@ -1,0 +1,71 @@
+URxvt*termName: screen-256color
+URxvt*loginShell: true
+URxvt*scrollColor: #777777
+URxvt*scrollstyle: plain
+URxvt*scrollTtyKeypress: true
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+URxvt*secondaryScreen: true
+URxvt*secondaryScroll: true
+URxvt*skipScroll: true
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
+URxvt*scrollBar_floating: false
+URxvt*fading: 30
+URxvt*utmpInhibit: false
+URxvt*urgentOnBell: false
+URxvt*visualBell: false
+URxvt*mapAlert: true
+URxvt*mouseWheelScrollPage: false
+URxvt*background: Black
+URxvt*foreground: White
+URxvt*colorUL: yellow
+URxvt*underlineColor: yellow
+URxvt*externalBorder:
+URxvt*borderColor: black
+
+!URxvt*font: xft:Meslo LG M for Powerline:autohint=true:pixelsize=12
+URxvt*font: xft:Roboto Mono Medium for Powerline:autohint=true:pixelsize=20,xft:Symbola,xft:Noto Emoji:minspace=False
+URxvt*saveLines: 5000
+URxvt*buffered: true
+URxvt*hold: false
+URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+URxvt*perl-ext-common:        default,matcher
+URxvt*perl-lib:            /usr/lib/urxvt/perl/
+URxvt*url-launcher:        /usr/bin/chromium
+URxvt*matcher.button:        1
+URxvt*geometry: 100x30
+
+URxvt*keysym.Shift-Control-V: eval:paste_clipboard
+URxvt*keysym.Shift-Control-C: eval:selection_to_clipboard
+!URxvt*iso14755_52: False
+
+!URxvt.keysym.C-V: perl:paste_clipboard
+!URxvt.keysym.C-C: eval:selection-to-clipboard
+!URxvt.keysym.C-V: selection-to-clipboard
+!URxvt.keysym.C-C: perl:clipboard:copy
+URxvt*iso14755: False
+!perl:clipboard:paste
+
+
+urxvt*foreground: white
+urxvt*background: black
+
+*color0:  #1c1c1c
+*color8:  #3d3a3a
+*color1:  #d770af
+*color9:  #d28abf
+*color2 : #9acc79
+*color10: #8fb676
+*color3:  #d0d26b
+*color11: #c8bc45
+*color4 : #77b6c5
+*color12: #8fa7b9
+*color5:  #a488d9
+*color13: #bd89de
+*color6:  #7fcab3
+*color14: #6ec2a8
+*color7:  #8d8d8d
+*color15: #dad3d3
+
+
