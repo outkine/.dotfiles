@@ -189,6 +189,8 @@ Plug 'ron89/thesaurus_query.vim'
 let g:tq_enabled_backends=["woxikon_de","jeck_ru","thesaurus_com","openoffice_en","mthesaur_txt"]
 let g:tq_python_version = 2
 
+
+Plug 'Vigemus/iron.nvim'
 call plug#end()
 
 
@@ -289,3 +291,6 @@ func! WordProcessor()
   set complete+=s
 endfu
 com! WP call WordProcessor()
+
+" terminal
+set modifiable
