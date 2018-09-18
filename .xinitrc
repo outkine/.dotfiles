@@ -6,4 +6,4 @@ feh --bg-scale ~/.config/background.jpg
 localctl set-keymap us
 setxkbmap -layout us,ru
 setxkbmap -option 'grp:alt_shift_toggle'
-redshift &
+#redshift &

@@ -141,7 +141,6 @@ Plug 'tpope/vim-abolish'
 
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-sleuth'
-Plug 'elzr/vim-json'
 "Plug 'python-mode/python-mode', { 'branch': 'develop' }
 "Plug 'hdima/python-syntax'
 let g:python_highlight_all = 1

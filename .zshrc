@@ -192,14 +192,8 @@ precmd() { _virtualenv_auto_activate }
 # OPAM configuration
 . /home/anton/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-
-# thefuck
-eval $(thefuck --alias)
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/anton/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/anton/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/anton/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /home/anton/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
+# git dotfiles
 alias config='/usr/bin/git --git-dir=/home/anton/.myconf/ --work-tree=/home/anton'
+
+# git subrepo completion
+fpath=('~/apps/git-subrepo/share/zsh-completion' $fpath)

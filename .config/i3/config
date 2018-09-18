@@ -207,8 +207,17 @@ exec --no-startup-id redshift
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id nm-applet
 exec --no-startup-id emojione-picker
-exec xautolock -detectsleep \
+exec --no-startup-id xautolock -detectsleep \
   -time 20 -locker "~/.config/i3/lock.sh ~/.config/i3/lock.png" \
   -notify 30 \
   -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
-exec xss-lock "~/.config/i3/lock.sh ~/.config/i3/lock.png"
+# exec xss-lock "~/.config/i3/lock.sh ~/.config/i3/lock.png"
+
+exec_always xset r rate 150 150
+exec_always feh --bg-scale ~/.config/background.jpg
+# sudo ~/scripts/powertop-fix
+# [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+exec_always localctl set-keymap us
+exec_always setxkbmap -layout us,ru
+exec_always setxkbmap -option 'grp:alt_shift_toggle'
+
