@@ -115,14 +115,16 @@ zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 
 
 # ======== Exports
-export PATH=~/.yarn/bin:~/.bin:~/.config/yarn/global/node_modules/.bin:~/.gem/ruby/2.5.0/bin:/home/linuxbrew/.linuxbrew/bin:~/.local/bin:$PATH
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 SAVEHIST=10000000
 HISTSIZE=10000000
 HISTFILE=~/.zsh_history
 DISABLE_CORRECTION="true"
+
+export PATH=~/.yarn/bin:~/.bin:~/.config/yarn/global/node_modules/.bin:~/.gem/ruby/2.5.0/bin:/home/linuxbrew/.linuxbrew/bin:~/.local/bin:~/.poetry/bin:$PATH
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 export ELECTRON_TRASH=gio
+export NODE_PATH="/home/anton/.config/yarn/global/node_modules/"
 
 #https://github.com/jwilm/alacritty/issues/1021
 export W3MIMGDISPLAY_PATH=~/.bin/w3m_fix
@@ -197,3 +199,5 @@ alias config='/usr/bin/git --git-dir=/home/anton/.myconf/ --work-tree=/home/anto
 
 # git subrepo completion
 fpath=('~/apps/git-subrepo/share/zsh-completion' $fpath)
+
+

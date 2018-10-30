@@ -12,8 +12,7 @@ Plug 'tpope/vim-surround'
 "Plug 'scrooloose/syntastic'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'scrooloose/nerdcommenter'
-"Plug 'tpope/vim-commentary'
-Plug 'tyru/caw.vim'
+"Plug 'tpope/vim-commentary' Plug 'tyru/caw.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
@@ -158,7 +157,6 @@ let g:user_emmet_settings = {
 
 "Plug 'hail2u/vim-css3-syntax'
 Plug 'sheerun/vim-polyglot'
-
 "Plug 'Glench/Vim-Jinja2-Syntax'
 
 "augroup VimCSS3Syntax
@@ -181,8 +179,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'connorholyday/vim-snazzy'
 Plug 'mhartington/oceanic-next'
 
-Plug 'Quramy/tsuquyomi'
-Plug 'posva/vim-vue'
+"Plug 'Quramy/tsuquyomi'
+"Plug 'posva/vim-vue'
 
 Plug 'ron89/thesaurus_query.vim'
 let g:tq_enabled_backends=["woxikon_de","jeck_ru","thesaurus_com","openoffice_en","mthesaur_txt"]
@@ -190,6 +188,7 @@ let g:tq_python_version = 2
 
 
 Plug 'Vigemus/iron.nvim'
+Plug 'elzr/vim-json'
 call plug#end()
 
 
@@ -292,4 +291,21 @@ endfu
 com! WP call WordProcessor()
 
 " terminal
-set modifiable
+" set modifiable
+
+" copy to system keyboard
+set clipboard=unnamedplus
+
+" delete without yanking
+noremap zd "_d
+noremap zx "_x
+
+
+"https://github.com/posva/vim-vue/issues/72#issuecomment-398732170
+" Make vue syntax faster
+let g:vue_disable_pre_processors=1
+
+" Fix highlighting
+autocmd FileType vue syntax sync fromstart
+"autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
+au BufNewFile,BufRead *.vue setf vue

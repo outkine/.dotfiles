@@ -156,3 +156,4 @@ HandlePowerKey=ignore
 HandleLidSwitch=hybrid-sleep
 /etc/systemd/logind.conf
 
+https://wiki.archlinux.org/index.php/redshift#configuration
