@@ -203,10 +203,10 @@ for_window [class="^.*"] border pixel 0
 
 # exec_always --no-startup-id compton
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id redshift
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id nm-applet
 exec --no-startup-id emojione-picker
+exec --no-startup-id gsimplecal
 exec --no-startup-id xautolock -detectsleep \
   -time 20 -locker "~/.config/i3/lock.sh ~/.config/i3/lock.png" \
   -notify 30 \
@@ -222,6 +222,7 @@ exec_always setxkbmap -layout us,ru
 exec_always setxkbmap -option 'grp:alt_shift_toggle'
 exec_always bash ~/.bin/fix_dbus
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+exec --no-startup-id redshift
 
 bindsym --release Print exec gnome-screenshot
 

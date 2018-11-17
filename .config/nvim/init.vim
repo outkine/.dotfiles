@@ -12,7 +12,8 @@ Plug 'tpope/vim-surround'
 "Plug 'scrooloose/syntastic'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'scrooloose/nerdcommenter'
-"Plug 'tpope/vim-commentary' Plug 'tyru/caw.vim'
+Plug 'tpope/vim-commentary'
+"Plug 'tyru/caw.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
@@ -20,17 +21,20 @@ Plug 'w0rp/ale'
 let g:ale_fix_on_save = 1
 "let g:ale_open_list = 1
 
+let g:ale_elixir_credo_options = '--strict'
 let g:ale_linters = {
 \   'python': ['pylint'],
 \   'javascript': ['eslint'],
-\   'ocaml': ['merlin']
+\   'ocaml': ['merlin'],
+\   'elixir': ['credo']
 \}
 " let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   'python': ['yapf'],
 \   'html': ['prettier'],
-\   'vue': ['eslint']
+\   'vue': ['eslint'],
+\   'elixir': ['mix_format']
 \}
 
 
@@ -122,6 +126,7 @@ Plug 'ryanoasis/vim-devicons'
 "endif
 
 Plug 'junegunn/fzf.vim'
+Plug 'slashmili/alchemist.vim'
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 "Plug 'kien/ctrlp.vim'
@@ -189,6 +194,8 @@ let g:tq_python_version = 2
 
 Plug 'Vigemus/iron.nvim'
 Plug 'elzr/vim-json'
+Plug 'pedrohdz/vim-yaml-folds'
+
 call plug#end()
 
 

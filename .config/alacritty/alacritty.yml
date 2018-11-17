@@ -108,39 +108,72 @@ render_timer: false
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: false
 
-## Colors (Oceanic Next)
-#colors:
-  ## Default colors
-  #primary:
-    #background: '0x1b2b34'
-    #foreground: '0xD8DEE9'
+### Colors (Oceanic Next)
+# #colors:
+#  ## Default colors
+#  #primary:
+#    #background: '0x1b2b34'
+#    #foreground: '0xD8DEE9'
 
-  ## Colors the cursor will use if `custom_cursor_colors` is true
-  #cursor:
-    #text: '0xec5f67'
-    #cursor: '0xec5f67'
+#  ## Colors the cursor will use if `custom_cursor_colors` is true
+#  #cursor:
+#    #text: '0xec5f67'
+#    #cursor: '0xec5f67'
 
-  ## Normal colors
-  #normal:
-    #black:   '0x343d46'
-    #red:     '0xEC5f67'
-    #green:   '0x99C794'
-    #yellow:  '0xFAC863'
-    #blue:    '0x6699cc'
-    #magenta: '0xc594c5'
-    #cyan:    '0x5fb3b3'
-    #white:   '0xd8dee9'
+#  ## Normal colors
+#  #normal:
+#    #black:   '0x343d46'
+#    #red:     '0xEC5f67'
+#    #green:   '0x99C794'
+#    #yellow:  '0xFAC863'
+#    #blue:    '0x6699cc'
+#    #magenta: '0xc594c5'
+#    #cyan:    '0x5fb3b3'
+#    #white:   '0xd8dee9'
 
-  ## Bright colors
-  #bright:
-    #black:   '0x343d46'
-    #red:     '0xEC5f67'
-    #green:   '0x99C794'
-    #yellow:  '0xFAC863'
-    #blue:    '0x6699cc'
-    #magenta: '0xc594c5'
-    #cyan:    '0x5fb3b3'
-    #white:   '0xd8dee9'
+#  ## Bright colors
+#  #bright:
+#    #black:   '0x343d46'
+#    #red:     '0xEC5f67'
+#    #green:   '0x99C794'
+#    #yellow:  '0xFAC863'
+#    #blue:    '0x6699cc'
+#    #magenta: '0xc594c5'
+#    #cyan:    '0x5fb3b3'
+#    #white:   '0xd8dee9'
+
+
+# # Colors (Hyper)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x000000'
+#     foreground: '0xffffff'
+#   cursor:
+#     text: '0xF81CE5'
+#     cursor: '0xffffff'
+
+#   # Normal colors
+#   normal:
+#     black:   '0x000000'
+#     red:     '0xfe0100'
+#     green:   '0x33ff00'
+#     yellow:  '0xfeff00'
+#     blue:    '0x0066ff'
+#     magenta: '0xcc00ff'
+#     cyan:    '0x00ffff'
+#     white:   '0xd0d0d0'
+
+#   # Bright colors
+#   bright:
+#     black:   '0x808080'
+#     red:     '0xfe0100'
+#     green:   '0x33ff00'
+#     yellow:  '0xfeff00'
+#     blue:    '0x0066ff'
+#     magenta: '0xcc00ff'
+#     cyan:    '0x00ffff'
+#     white:   '0xFFFFFF'
 
 # colors (snazzy)
 colors:
@@ -311,9 +344,9 @@ key_bindings:
   - { key: Q,        mods: Command, action: Quit                         }
   - { key: W,        mods: Command, action: Quit                         }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
-  - { key: Key0,     mods: Control, action: ResetFontSize                }
-  - { key: Equals,   mods: Control, action: IncreaseFontSize             }
-  - { key: Subtract, mods: Control, action: DecreaseFontSize             }
+  - { key: Key0,     mods: Alt, action: ResetFontSize                }
+  - { key: Equals,   mods: Alt, action: IncreaseFontSize             }
+  - { key: Subtract, mods: Alt, action: DecreaseFontSize             }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }

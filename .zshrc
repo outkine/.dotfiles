@@ -128,6 +128,7 @@ export NODE_PATH="/home/anton/.config/yarn/global/node_modules/"
 
 #https://github.com/jwilm/alacritty/issues/1021
 export W3MIMGDISPLAY_PATH=~/.bin/w3m_fix
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 
 # ======= Aliases
