@@ -22,11 +22,12 @@ let g:ale_fix_on_save = 1
 "let g:ale_open_list = 1
 
 let g:ale_elixir_credo_options = '--strict'
+let g:ale_elixir_elixir_ls_release = '/home/anton/.elixir/elixir-ls-release'
 let g:ale_linters = {
 \   'python': ['pylint'],
 \   'javascript': ['eslint'],
 \   'ocaml': ['merlin'],
-\   'elixir': ['credo']
+\   'elixir': ['elixir-ls', 'credo']
 \}
 " let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_fixers = {
@@ -302,6 +303,7 @@ com! WP call WordProcessor()
 
 " copy to system keyboard
 set clipboard=unnamedplus
+
 
 " delete without yanking
 noremap zd "_d
