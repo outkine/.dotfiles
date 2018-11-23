@@ -115,8 +115,8 @@ zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 
 
 # ======== Exports
-SAVEHIST=10000000
-HISTSIZE=10000000
+SAVEHIST=10000000000000000
+HISTSIZE=10000000000000000
 HISTFILE=~/.zsh_history
 DISABLE_CORRECTION="true"
 
@@ -201,4 +201,5 @@ alias config='/usr/bin/git --git-dir=/home/anton/.myconf/ --work-tree=/home/anto
 # git subrepo completion
 fpath=('~/apps/git-subrepo/share/zsh-completion' $fpath)
 
-
+# anaconda
+source /home/anton/anaconda3/etc/profile.d/conda.sh

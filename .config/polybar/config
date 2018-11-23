@@ -1,25 +1,25 @@
 [colors]
-primary = #FFFFFF
-secondary = #99bffc
+primary = #ffffff
 background = #000000
+secondary = #666666
 
 [bar/bottom]
+monitor = HDMI-1
 tray-position = right
 
 width = 100%
 bottom = true
-height = 22
-font-0 = Montserrat:size=11
-font-1 = Material Icons
+height = 24
+font-0 = pango:size=11
+font-1 = "Material Icons"
 background = ${colors.background}
 
-separator = "  //  "
-foreground = ${colors.secondary}
+separator = "  "
 
-padding = 2
+padding = 3
 
-modules-left = i3 menu
-modules-right = volume xbacklight keyboard battery network memory cpu date
+modules-left = i3
+modules-right = volume keyboard battery date
 
 [settings]
 format-foreground = ${colors.primary}
@@ -28,13 +28,12 @@ format-foreground = ${colors.primary}
 type = internal/i3
 
 label-focused = %index%
-label-focused-background = ${colors.secondary}
-label-focused-foreground = ${colors.background}
-label-focused-padding = 1
-label-focused-margin = 0
+label-focused-foreground = ${colors.primary}
+label-focused-margin = 2
+
 
 label-unfocused = %index%
-label-unfocused-margin = 1
+label-unfocused-margin = 2
 
 format-foreground = ${colors.secondary}
 
@@ -45,7 +44,7 @@ date = %m/%d%
 time = %I:%M
 
 format = <label>
-label =  %time% %date%
+label = %time% %date%
 
 [module/battery]
 type = internal/battery
@@ -54,37 +53,37 @@ format-charging = <label-charging>
 label-charging =  %percentage%%
 
 format-discharging = <label-discharging>
-label-discharging =  %percentage%% %consumption%W
+label-discharging = %percentage%% %consumption%W
 
 interval = 10
 
 [module/xbacklight]
 type = internal/xbacklight
 
-format =  <label>
+format = <label>
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
-label-muted = 
+label-muted = 0%
 format-volume = <label-volume>
-label-volume =  %percentage%%
+label-volume = %percentage%%
 
 [module/keyboard]
 type = internal/xkeyboard
 
-format =  <label-layout>
+format = <label-layout>
 
 [module/memory]
 type = internal/memory
 
-format =  <label>
+format = <label>
 interval = 10
 
 [module/cpu]
 type = internal/cpu
 
-format =  <label>
+format = <label>
 interval = 10
 
 [module/network]

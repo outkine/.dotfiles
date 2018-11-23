@@ -8,15 +8,8 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod4
-
-gaps inner 10
-
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace
+# Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.  font pango:monospace
 font pango:FontAwesome
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -29,7 +22,6 @@ font pango:FontAwesome
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -39,14 +31,9 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
+# start rofi (a program launcher)
 bindsym $mod+x exec rofi -show run
 bindsym $mod+Shift+x exec rofi -show window
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -121,10 +108,6 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # util
-#bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
-#bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
-#bindsym Control+XF86MonBrightnessUp exec "xbacklight -set 100"
-#bindsym Control+XF86MonBrightnessDown exec "xbacklight -set 1"
 bindsym XF86MonBrightnessUp exec "lux -a 10%"
 bindsym XF86MonBrightnessDown exec "lux -s 10%"
 bindsym Control+XF86MonBrightnessUp exec "lux -S 100%"
@@ -133,15 +116,11 @@ bindsym XF86AudioRaiseVolume exec "amixer set Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer set Master 5%-"
 bindsym Control+XF86AudioLowerVolume exec "amixer set Master 1%"
 bindsym Control+XF86AudioRaiseVolume exec "amixer set Master 100%"
-#bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
-#bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
-#bindsym Control+XF86AudioRaiseVolume exec "pactl set-sink-volume 0 100%"
-#bindsym Control+XF86AudioLowerVolume exec "pactl set-sink-volume 0 100%"
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
-#bindsym XF86AudioMute exec "amixer set Master toggle"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym --release Print exec gnome-screenshot
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -171,58 +150,65 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+
+## bar
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #bar {
-#  status_command i3blocks -c ~/.config/i3blocks/config
-#}
-#        position bottom
+#        status_command i3status
+#        i3bar_command i3bar -t
+#        tray_output eDP-1
+#        output eDP-1
 #        colors {
 #                 background #000000
 #                 statusline #ffffff
 #                 separator #666666
-#                 #class             border  bground text
-#                 focused_workspace  #B0BEC5 #90A4AE #000000
-#                 active_workspace   #B0BEC5 #90A4AE #000000
-#                 inactive_workspace #263238 #37474F #B0BEC5
-#                 urgent_workspace   #F4511E #FF5722 #ffffff
-#                 binding_mode       #F4511E #FF5722 #ffffff
+#                 #class             border  background text
+#                 focused_workspace  #000000 #000000 #ffffff
+#                 active_workspace   #000000 #000000 #666666
+#                 inactive_workspace #000000 #000000 #666666
+#                 urgent_workspace   #000000 #000000 #23DCE8
+#                 binding_mode       #000000 #000000 #ffffff
 #         }
-# }
-
-#bar {
-#    status_command i3status
 #}
 
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+## colors
+# class                 border  background text indicator child_border
+client.focused          #000000 #000000 #ffffff #ffffff #000000
+client.focused_inactive #000000 #000000 #ffffff #ffffff #000000
+client.unfocused        #000000 #000000 #666666 #ffffff #000000
+client.urgent           #ffffff #000000 #23DCE8 #ffffff #000000
+client.placeholder      #ffffff #000000 #ffffff #ffffff #000000
+client.background       #000000
 
 
-default_border pixel 3
-#default_border none
-for_window [class="^.*"] border pixel 0
+## borders
 
-# exec_always --no-startup-id compton
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+default_border pixel 0
+hide_edge_borders smart
+
+
+## applets
+
 exec --no-startup-id nm-applet
 exec --no-startup-id emojione-picker
-exec --no-startup-id gsimplecal
-exec --no-startup-id xautolock -detectsleep \
-  -time 20 -locker "~/.config/i3/lock.sh ~/.config/i3/lock.png" \
-  -notify 30 \
-  -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
-# exec xss-lock "~/.config/i3/lock.sh ~/.config/i3/lock.png"
+exec --no-startup-id gnome-pomodoro
 
-exec_always xset r rate 150 150
-exec_always feh --bg-scale ~/.config/background.jpg
-# sudo ~/scripts/powertop-fix
-# [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-exec_always localctl set-keymap us
-exec_always setxkbmap -layout us,ru
-exec_always setxkbmap -option 'grp:alt_shift_toggle'
-exec_always bash ~/.bin/fix_dbus
+
+## other
+
+exec_always --no-startup-id xsetroot -solid "#000000"
+# exec --no-startup-id xautolock -detectsleep \
+#  -time 20 -locker "~/.config/i3/lock.sh ~/.config/i3/lock.png" \
+#  -notify 30 \
+#  -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
+exec xss-lock "~/.config/i3/lock.sh ~/.config/i3/lock.png"
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec_always --no-startup-id xset r rate 150 150
+# exec_always feh --bg-scale ~/.config/background.jpg
+exec_always --no-startup-id localctl set-keymap us
+exec_always --no-startup-id setxkbmap -layout us,ru
+exec_always --no-startup-id setxkbmap -option 'grp:alt_shift_toggle'
+exec --no-startup-id bash ~/.bin/fix_dbus
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
-
-bindsym --release Print exec gnome-screenshot
-
