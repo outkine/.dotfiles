@@ -203,3 +203,4 @@ fpath=('~/apps/git-subrepo/share/zsh-completion' $fpath)
 
 # anaconda
 source /home/anton/anaconda3/etc/profile.d/conda.sh
+

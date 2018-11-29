@@ -4,7 +4,6 @@ background = #000000
 secondary = #666666
 
 [bar/bottom]
-monitor = HDMI-1
 tray-position = right
 
 width = 100%
@@ -29,11 +28,11 @@ type = internal/i3
 
 label-focused = %index%
 label-focused-foreground = ${colors.primary}
-label-focused-margin = 2
-
+label-focused-padding = 1
 
 label-unfocused = %index%
-label-unfocused-margin = 2
+label-unfocused-padding = 1
+label-visible-padding = 1
 
 format-foreground = ${colors.secondary}
 
