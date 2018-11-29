@@ -8,7 +8,7 @@ source /home/anton/.config/nvim/ultimate_vimrc_basic.vim
 Plug 'tpope/vim-sensible'
 
 """
-""" Language Server
+""" Language Server (prefer for linting)
 """
 Plug 'autozimu/LanguageClient-neovim', {
 \ 'branch': 'next',
@@ -16,6 +16,44 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ }
 
 Plug 'reasonml-editor/vim-reason-plus'
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+\ 'python': ['pyls'],
+\ 'reason': ['~/.language-servers/reason-language-server/reason-language-server.exe'],
+\ 'elixir': ['~/.language-servers/elixir-ls-release/language_server.sh'],
+\ }
+
+nnoremap <silent> gc :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> gr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> ge :call LanguageClient#textDocument_references()<CR>
+nnoremap <silent> gi :call LanguageClient#textDocument_implementation()<CR>
+nnoremap <silent> gt :call LanguageClient#textDocument_typeDefinition()<CR>
+
+"""
+""" ALE (prefer for fixing)
+"""
+Plug 'w0rp/ale'
+let g:ale_fix_on_save = 1
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'ocaml': ['merlin'],
+\   'elixir': ['credo']
+\}
+
+let g:ale_python_pylint_options = '--load-plugins pylint_django'
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\   'python': ['yapf'],
+\   'html': ['prettier'],
+\   'vue': ['eslint'],
+\   'elixir': ['mix_format']
+\}
 
 """
 """ NERDtree
@@ -64,30 +102,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 let g:easy_align_ignore_groups = []
-
-"""
-""" ALE
-"""
-Plug 'w0rp/ale'
-let g:ale_fix_on_save = 1
-
-let g:ale_elixir_credo_options = '--strict'
-let g:ale_elixir_elixir_ls_release = '/home/anton/.language-servers/elixir-ls-release'
-let g:ale_linters = {
-\   'python': ['pylint'],
-\   'javascript': ['eslint'],
-\   'ocaml': ['merlin'],
-\   'elixir': ['elixir-ls', 'credo']
-\}
-
-let g:ale_python_pylint_options = '--load-plugins pylint_django'
-let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint'],
-\   'python': ['yapf'],
-\   'html': ['prettier'],
-\   'vue': ['eslint'],
-\   'elixir': ['mix_format']
-\}
 
 """
 """ Autocomplete
@@ -173,7 +187,6 @@ let g:tq_python_version = 3
 """ Language support
 """
 Plug 'sheerun/vim-polyglot'
-Plug 'slashmili/alchemist.vim'
 Plug 'pedrohdz/vim-yaml-folds'
 " https://github.com/posva/vim-vue/issues/72#issuecomment-398732170
 " Make vue syntax faster
