@@ -120,7 +120,7 @@ HISTSIZE=10000000000000000
 HISTFILE=~/.zsh_history
 DISABLE_CORRECTION="true"
 
-export PATH=~/.yarn/bin:~/.bin:~/.config/yarn/global/node_modules/.bin:~/.gem/ruby/2.5.0/bin:/home/linuxbrew/.linuxbrew/bin:~/.local/bin:~/.poetry/bin:$PATH
+export PATH=~/.yarn/bin:~/.bin:~/.config/yarn/global/node_modules/.bin:~/.gem/ruby/2.5.0/bin:/home/linuxbrew/.linuxbrew/bin:~/.local/bin:~/.poetry/bin:~/.opam/system/bin/:$PATH
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export ELECTRON_TRASH=gio

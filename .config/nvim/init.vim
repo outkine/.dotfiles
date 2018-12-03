@@ -22,37 +22,39 @@ set hidden
 
 let g:LanguageClient_serverCommands = {
 \ 'python': ['pyls'],
-\ 'reason': ['~/.language-servers/reason-language-server/reason-language-server.exe'],
 \ 'elixir': ['~/.language-servers/elixir-ls-release/language_server.sh'],
 \ }
 
-nnoremap <silent> gc :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> gr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> ge :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent> gi :call LanguageClient#textDocument_implementation()<CR>
-nnoremap <silent> gt :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <silent> zc :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> zh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> zd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> zr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> ze :call LanguageClient#textDocument_references()<CR> nnoremap <silent> zi :call LanguageClient#textDocument_implementation()<CR> nnoremap <silent> zt :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <silent> zs :call LanguageClient#explainErrorAtPoint()<CR>
+nnoremap <silent> zg :call LanguageClient#debugInfo()<CR>
 
 """
 """ ALE (prefer for fixing)
 """
 Plug 'w0rp/ale'
 let g:ale_fix_on_save = 1
-
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ocaml': ['merlin'],
+\   'reason': ['merlin'],
 \   'elixir': ['credo']
 \}
 
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
+let g:ale_ocaml_ocamlformat_options = '-p compact --let-open auto --sequence-style terminator'
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   'python': ['yapf'],
 \   'html': ['prettier'],
 \   'vue': ['eslint'],
-\   'elixir': ['mix_format']
+\   'elixir': ['mix_format'],
+\   'reason': ['refmt'],
+\   'ocaml': ['ocamlformat']
 \}
 
 """
@@ -114,19 +116,20 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#omni#input_patterns = {}
+let g:deoplete#auto_complete_start_length = 2
+
+" Use tab to cycle through completions
+Plug 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " Merlin
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
+let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.ocaml = '[.\w]+'
 let g:deoplete#omni#input_patterns.reason = '[.\w]+'
-
-Plug 'ervandew/supertab'  " use tab to cycle through completions
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:deoplete#file#enable_buffer_path = 1
 
 """
 """ Status bar
@@ -288,8 +291,8 @@ nmap <leader>n :tabnew
 set clipboard=unnamedplus
 
 " delete without yanking
-noremap zd "_d
-noremap zx "_x
+noremap gd "_d
+noremap gx "_x
 
 " ctags?
 let $TMPDIR = $HOME"/temp"
