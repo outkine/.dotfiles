@@ -168,6 +168,7 @@ nmap <C-T> :TagbarToggle<CR>
 " fuzzy finder
 Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=node_modules --exclude=test'
 
 " resize windows easier
 Plug 'simeji/winresizer'
