@@ -15,15 +15,14 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ 'do': 'bash install.sh',
 \ }
 
-Plug 'reasonml-editor/vim-reason-plus'
-
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
 let g:LanguageClient_serverCommands = {
 \ 'python': ['pyls'],
-\ 'elixir': ['~/.language-servers/elixir-ls-release/language_server.sh'],
 \ }
+
+" "'elixir': ['~/.language-servers/elixir-ls-release/language_server.sh'],
 
 nnoremap <silent> zc :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> zh :call LanguageClient#textDocument_hover()<CR>
@@ -38,11 +37,14 @@ nnoremap <silent> zg :call LanguageClient#debugInfo()<CR>
 """
 Plug 'w0rp/ale'
 let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+
+let g:ale_elixir_elixir_ls_release = '~/.language-servers/elixir-ls-release/'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ocaml': ['merlin'],
 \   'reason': ['merlin'],
-\   'elixir': ['credo']
+\   'elixir': ['elixir-ls', 'credo']
 \}
 
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
@@ -198,6 +200,9 @@ let g:vue_disable_pre_processors=1
 " Fix highlighting
 autocmd FileType vue syntax sync fromstart
 au BufNewFile,BufRead *.vue setf vue
+
+" Plug 'slashmili/alchemist.vim'
+Plug 'reasonml-editor/vim-reason-plus'
 
 """
 """ Theme
