@@ -113,14 +113,16 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 
+# asdf (elixir version manager)
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 
 # ======== Exports
 SAVEHIST=10000000000000000
 HISTSIZE=10000000000000000
 HISTFILE=~/.zsh_history
 DISABLE_CORRECTION="true"
-
-export PATH=~/.yarn/bin:~/.bin:~/.config/yarn/global/node_modules/.bin:~/.gem/ruby/2.5.0/bin:/home/linuxbrew/.linuxbrew/bin:~/.local/bin:~/.poetry/bin:~/.opam/system/bin/:$PATH
+export PATH=$HOME/.asdf/installs/nodejs/9.0.0/.npm/bin:~/.bin:~/.gem/ruby/2.5.0/bin:~/.local/bin:~/.poetry/bin:~/.opam/system/bin/:$PATH
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export ELECTRON_TRASH=gio
@@ -185,7 +187,3 @@ fpath=('~/apps/git-subrepo/share/zsh-completion' $fpath)
 
 # anaconda
 source /home/anton/anaconda3/etc/profile.d/conda.sh
-
-# asdf (elixir version manager)
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
