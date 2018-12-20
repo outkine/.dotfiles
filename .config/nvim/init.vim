@@ -226,7 +226,7 @@ set indentexpr=""
 :autocmd BufEnter * :setlocal indentexpr=""
 
 call plug#end()
-colorscheme snazzy
+" colorscheme snazzy
 
 """
 """ FASD
