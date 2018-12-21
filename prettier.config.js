@@ -8,5 +8,15 @@ module.exports = {
     "jsxBracketSameLine": false,
     "semi": false,
     "parser": "babylon",
-    "arrowParens": "always"
+    "arrowParens": "always",
+	  "overrides": [
+		      {
+			            "files": "*.vue",
+			            "options": {
+					            "parser": "vue"
+					          }
+			          }
+		    ]
+
+
 }
