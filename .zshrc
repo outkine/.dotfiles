@@ -9,6 +9,7 @@ zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-history-substring-search'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions'
+zplug "lukechilds/zsh-better-npm-completion", defer:2
 zplug 'geometry-zsh/geometry', as:theme
 
 if ! zplug check --verbose; then
@@ -122,11 +123,11 @@ SAVEHIST=10000000000000000
 HISTSIZE=10000000000000000
 HISTFILE=~/.zsh_history
 DISABLE_CORRECTION="true"
-export PATH=$HOME/.asdf/installs/nodejs/9.0.0/.npm/bin:~/.bin:~/.gem/ruby/2.5.0/bin:~/.local/bin:~/.poetry/bin:~/.opam/system/bin/:$PATH
+export PATH=~/.asdf/installs/nodejs/9.0.0/.npm/bin:~/.bin:~/.gem/ruby/2.5.0/bin:~/.local/bin:~/.poetry/bin:~/.opam/system/bin/:$PATH
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export ELECTRON_TRASH=gio
-export NODE_PATH="/home/anton/.config/yarn/global/node_modules/"
+export NODE_PATH=~/.asdf/installs/nodejs/9.0.0/.npm/bin
 
 #https://github.com/jwilm/alacritty/issues/1021
 export W3MIMGDISPLAY_PATH=~/.bin/w3m_fix
