@@ -137,7 +137,8 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # ======= Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-
+export LESS_TERMCAP_so=$(printf '\33[5;30;43m')
+export LESS_TERMCAP_se=$(printf '\33[m')
 
 # ======== Vim
 bindkey -v
