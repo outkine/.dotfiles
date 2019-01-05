@@ -32,8 +32,8 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+x exec rofi -show run
-bindsym $mod+Shift+x exec rofi -show window
+bindsym $mod+d exec rofi -show run
+bindsym $mod+c exec rofi -show window
 
 # change focus
 bindsym $mod+h focus left
@@ -65,16 +65,15 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
+bindsym $mod+Shift+x floating toggle
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+x focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+z focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
