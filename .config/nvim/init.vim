@@ -136,10 +136,10 @@ let g:deoplete#file#enable_buffer_path = 1
 """
 """ Status bar
 """
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"let g:airline_powerline_fonts = 0
+"let g:airline_theme='onedark'
 
 """
 """ Search
@@ -158,7 +158,7 @@ nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 
 """
 """ Misc Plugins
