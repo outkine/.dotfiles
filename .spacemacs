@@ -361,6 +361,11 @@ you should place your code here."
     (setq-default js2-basic-offset 2
                   js-indent-level 2)
 
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    (setq python-indent-offset 2)
+
   (setq tern-command '("/home/anton/.asdf/installs/nodejs/9.0.0/.npm/bin/tern"))
     (add-hook 'js2-mode-hook (lambda ()
                                (tern-mode)
