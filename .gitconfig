@@ -1,0 +1,18 @@
+[user]
+	email = antonoutkine@gmail.com
+	name = Anton
+[credential]
+	helper = store
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[status]
+	submoduleSummary = true
+[fetch]
+	recurseSubmodules = on-demand
+[diff]
+	submodule = log
+[alias]
+    pushpr = "!f() { git push production master;git commit --allow-empty -m 'Push to execute post-receive';git push production master; }; f"

@@ -190,6 +190,7 @@ hide_edge_borders smart
 ## applets
 
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id emojione-picker
 exec --no-startup-id gnome-pomodoro
 
