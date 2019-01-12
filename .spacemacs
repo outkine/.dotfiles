@@ -345,6 +345,7 @@ you should place your code here."
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'web-mode-hook 'prettier-js-mode)
   (add-hook 'vue-mode-hook 'prettier-js-mode)
+  (setq prettier-js-show-errors nil)
 
   (defun use-eslint-from-node-modules ()
     (let* ((root (locate-dominating-file
@@ -364,6 +365,7 @@ you should place your code here."
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-css-indent-offset 2)
     (setq web-mode-code-indent-offset 2)
+    (setq css-indent-offset 2)
     (setq python-indent-offset 2)
 
   (setq tern-command '("/home/anton/.asdf/installs/nodejs/9.0.0/.npm/bin/tern"))
