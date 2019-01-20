@@ -2,6 +2,11 @@ set encoding=UTF-8
 call plug#begin()
 
 """
+""" Neovim
+"""
+let g:python3_host_prog = substitute(system('asdf which python'),'\n$','','''')
+
+"""
 """ Defaults
 """
 source /home/anton/.config/nvim/ultimate_vimrc_basic.vim
@@ -53,7 +58,7 @@ let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   'python': ['yapf'],
 \   'html': ['prettier'],
-\   'vue': ['eslint'],
+\   'vue': ['prettier', 'eslint'],
 \   'elixir': ['mix_format'],
 \   'reason': ['refmt'],
 \   'ocaml': ['ocamlformat']
@@ -284,6 +289,10 @@ com! WP call WordProcessor()
 """
 """ Misc
 """
+
+" up and down move visually
+map j gj
+map k gk
 
 " fix paste formatting
 set nopaste
