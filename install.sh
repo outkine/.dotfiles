@@ -55,7 +55,7 @@ yay -S
   \i3 rxvt-unicode-truecolor zsh dunst polybar rofi
   \tlp powertop htop
   \bumblebee bbswitch nvidia mesa mesa-demos xf86-video-intel
-  \thunderbird firefox telegram-desktop gthumb inkscape gimp gthumb libreoffice-fresh
+  \thunderbird firefox telegram-desktop gthumb inkscape gimp gthumb libreoffice-fresh figma-bin
   \redshift playerctl unzip fasd imagemagick scrot hub openssh xclip ncdu emojione-picker-git
   \lxappearance paper-icon-theme arc-gtk-theme
   \networkmanager nm-applet gnome
