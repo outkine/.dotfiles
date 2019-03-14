@@ -70,3 +70,4 @@ urxvt*background: black
 *color14: #23dce8
 *color15: #cccccc
 
+Xcursor.size: 22
