@@ -188,7 +188,10 @@ alias config='/usr/bin/git --git-dir=/home/anton/.myconf/ --work-tree=/home/anto
 fpath=('~/apps/git-subrepo/share/zsh-completion' $fpath)
 
 # anaconda
-source /home/anton/anaconda3/etc/profile.d/conda.sh
+# source /home/anton/anaconda3/etc/profile.d/conda.sh
 
 # mv include hidden files
 setopt dotglob
+
+# hub
+eval "$(hub alias -s)"
