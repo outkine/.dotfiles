@@ -179,10 +179,10 @@ _virtualenv_auto_activate() {
 precmd() { _virtualenv_auto_activate }
 
 # OPAM configuration
-. /home/anton/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# . /home/anton/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # git dotfiles
-alias config='/usr/bin/git --git-dir=/home/anton/.myconf/ --work-tree=/home/anton'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # git subrepo completion
 fpath=('~/apps/git-subrepo/share/zsh-completion' $fpath)
