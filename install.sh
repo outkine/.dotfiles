@@ -1,3 +1,4 @@
+# supplements: https://wiki.archlinux.org/index.php/Installation_guide
 # make sure to run this in an up-to-date Arch ISO!
 
 wifi-menu
