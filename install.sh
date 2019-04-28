@@ -116,7 +116,9 @@ ui.track_notifications_enabled=false
 
 # install https://github.com/JakeBecker/elixir-ls into ~/.language-servers/elixir-ls-release
 
-# and then copy .mozilla and thunderbird over usb
+# get Documents and fonts from mega.nz
+
+# copy .mozilla and thunderbird over usb
 # sudo mount /dev/sd... /mnt
 # sudo tar czf /mnt/thunderbird.tar.gz ~/.thunderbird
 # sudo tar czf /mnt/mozilla.tar.gz ~/.mozilla
@@ -125,3 +127,4 @@ ui.track_notifications_enabled=false
 # sudo tar xzf /mnt/mozilla.tar.gz > ~/.mozilla
 # rm -rf ~/.thunderbird
 # sudo tar xzf /mnt/thunderbird.tar.gz > ~/.thunderbird
+
