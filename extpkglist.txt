@@ -1,0 +1,17 @@
+bluej
+emojione-picker-git
+figma-bin
+gogui
+jid
+lux
+megasync
+pachi
+paper-icon-theme
+polybar
+pomodoro-applet
+rxvt-unicode-truecolor
+sabaki
+skypeforlinux-stable-bin
+spotify
+ttf-roboto-mono-powerline-git
+yay

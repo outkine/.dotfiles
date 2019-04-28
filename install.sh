@@ -54,18 +54,17 @@ makepkg -si
 cd ..
 rm -rf yay
 
-yay -S
-  \xorg lightdm lightdm-gtk-greeter
-  \i3 rxvt-unicode-truecolor zsh dunst polybar rofi
-  \tlp powertop htop
-  \bumblebee bbswitch nvidia mesa mesa-demos xf86-video-intel
-  \thunderbird firefox telegram-desktop gthumb inkscape gimp gthumb libreoffice-fresh figma-bin
-  \redshift playerctl unzip fasd imagemagick scrot hub openssh xclip ncdu emojione-picker-git timew httpie
-  \lxappearance paper-icon-theme arc-gtk-theme
-  \networkmanager nm-applet gnome
-  \lux pulseaudio pulseaudio-alsa alsa-utils
-  \ttf-roboto-mono-powerline-git
-  \cups
+
+# transfer packages:
+# pacman -Qqen > pkglist.txt
+# and
+# pacman -Qqem > extpkglist.txt
+# then
+sudo pacman -S --needed $(comm -12 <(pacman -Slq|sort) <(sort pkglist.txt) )
+# and
+yay -S --noedit --noconfirm --needed extpkglist.txt
+
+
 sudo chsh -s /bin/zsh
 sudo systemctl enable org.cups.cupsd
 sudo systemctl enable lightdm
@@ -73,6 +72,7 @@ sudo systemctl enable tlp
 sudo gpasswd -a anton bumblebee
 sudo systemctl enable bumblebeed
 sudo systemctl enable NetworkManager
+sudo lux
 systemctl --user enable redshift
 
 shutdown now -r
@@ -99,6 +99,7 @@ echo ".cfg" >> .gitignore
 git clone --bare https://github.com/outkine/.dotfiles $HOME/.cfg
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 config checkout
+config config --local status.showUntrackedFiles no
 
 
 # .mozilla/firefox/.../chrome/userChrome.css
