@@ -4,7 +4,7 @@ call plug#begin()
 """
 """ Neovim
 """
-let g:python3_host_prog = substitute(system('asdf which python'),'\n$','','''')
+"" let g:python3_host_prog = substitute(system('asdf which python'),'\n$','','''')
 
 """
 """ Defaults
@@ -44,7 +44,7 @@ Plug 'w0rp/ale'
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
-let g:ale_elixir_elixir_ls_release = '~/.language-servers/elixir-ls-release/'
+let g:ale_elixir_elixir_ls_release = '/home/anton/.language-servers/elixir-ls-release'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ocaml': ['merlin'],
@@ -138,6 +138,15 @@ let g:deoplete#omni#input_patterns.ocaml = '[.\w]+'
 let g:deoplete#omni#input_patterns.reason = '[.\w]+'
 let g:deoplete#file#enable_buffer_path = 1
 
+" Elm
+" Plug 'pbogut/deoplete-elm'
+" let g:deoplete#omni#functions = {}
+" let g:deoplete#sources = {}
+" let g:deoplete#sources._ = ['file', 'neosnippet']
+" let g:deoplete#omni#functions.elm = ['elm#Complete']
+" let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
+" let g:deoplete#sources.elm = ['omni'] + g:deoplete#sources._
+
 """
 """ Status bar
 """
@@ -205,6 +214,8 @@ let g:vue_disable_pre_processors=1
 " Fix highlighting
 autocmd FileType vue syntax sync fromstart
 au BufNewFile,BufRead *.vue setf vue
+
+" Plug 'elmcast/elm-vim'
 
 " Plug 'slashmili/alchemist.vim'
 Plug 'reasonml-editor/vim-reason-plus'

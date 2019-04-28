@@ -51,10 +51,10 @@ bindsym $mod+Shift+l move right
 bindsym $mod+Mod1+l exec ~/.config/i3/lock.sh ~/.config/i3/lock.png
 
 # split in horizontal orientation
-bindsym $mod+b split h
+# bindsym $mod+b split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -65,9 +65,9 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+x floating toggle
-# change focus between tiling / floating windows
-bindsym $mod+x focus mode_toggle
+bindsym $mod+g floating toggle
+# change focus beteen tiling / floating windows
+bindsym $mod+b focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -119,7 +119,7 @@ bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 bindsym XF86AudioPlay exec "playerctl play-pause"
-bindsym --release Print exec gnome-screenshot
+bindsym --release Print exec gnome-screenshot -i
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

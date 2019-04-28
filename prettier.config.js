@@ -7,7 +7,7 @@ module.exports = {
     "bracketSpacing": true,
     "jsxBracketSameLine": false,
     "semi": false,
-    "parser": "babylon",
+    "parser": "babel",
     "arrowParens": "always",
 	  "overrides": [
 		      {

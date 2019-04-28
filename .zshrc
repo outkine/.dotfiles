@@ -123,7 +123,8 @@ SAVEHIST=10000000000000000
 HISTSIZE=10000000000000000
 HISTFILE=~/.zsh_history
 DISABLE_CORRECTION="true"
-export PATH=~/.asdf/installs/nodejs/9.0.0/.npm/bin:~/.bin:~/.gem/ruby/2.5.0/bin:~/.local/bin:~/.poetry/bin:~/.opam/system/bin/:$PATH
+export PATH=~/.asdf/installs/nodejs/9.0.0/.npm/bin:~/.bin:~/.gem/ruby/2.5.0/bin:~/.local/bin:~/.poetry/bin:~/.opam/system/bin:~/.config/yarn/global/node_modules/.bin:$PATH
+
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export ELECTRON_TRASH=gio
@@ -179,7 +180,7 @@ _virtualenv_auto_activate() {
 precmd() { _virtualenv_auto_activate }
 
 # OPAM configuration
-# . /home/anton/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. /home/anton/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # git dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -195,3 +196,7 @@ setopt dotglob
 
 # hub
 eval "$(hub alias -s)"
+
+# xclip
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
