@@ -114,6 +114,8 @@ config config --local status.showUntrackedFiles no
 ui.track_notifications_enabled=false
 """
 
+# install https://github.com/JakeBecker/elixir-ls into ~/.language-servers/elixir-ls-release
+
 # and then copy .mozilla and thunderbird over usb
 # sudo mount /dev/sd... /mnt
 # sudo tar czf /mnt/thunderbird.tar.gz ~/.thunderbird
