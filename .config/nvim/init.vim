@@ -9,7 +9,7 @@ call plug#begin()
 """
 """ Defaults
 """
-source /home/anton/.config/nvim/ultimate_vimrc_basic.vim
+source $HOME/.config/nvim/ultimate_vimrc_basic.vim
 Plug 'tpope/vim-sensible'
 
 """
@@ -44,7 +44,7 @@ Plug 'w0rp/ale'
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
-let g:ale_elixir_elixir_ls_release = '/home/anton/.language-servers/elixir-ls-release'
+let g:ale_elixir_elixir_ls_release = '$HOME/.language-servers/elixir-ls-release'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ocaml': ['merlin'],
@@ -131,12 +131,12 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " Merlin
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.ocaml = '[.\w]+'
-let g:deoplete#omni#input_patterns.reason = '[.\w]+'
-let g:deoplete#file#enable_buffer_path = 1
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" let g:deoplete#omni#input_patterns = {}
+" let g:deoplete#omni#input_patterns.ocaml = '[.\w]+'
+" let g:deoplete#omni#input_patterns.reason = '[.\w]+'
+" let g:deoplete#file#enable_buffer_path = 1
 
 " Elm
 " Plug 'pbogut/deoplete-elm'
@@ -291,7 +291,7 @@ func! WordProcessor()
   setlocal linebreak
   " spelling and thesaurus
   setlocal spell spelllang=en_us
-  set thesaurus+=/home/anton/.vim/thesaurus/mthesaur.txt
+  set thesaurus+=$HOME/.vim/thesaurus/mthesaur.txt
   " complete+=s makes autocompletion search the thesaurus
   set complete+=s
 endfu
