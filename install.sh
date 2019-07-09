@@ -82,8 +82,6 @@ ssh-keygen
 git config --global credential.helper store
 
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-cd ~/.asdf
-git checkout "$(git describe --abbrev=0 --tags)"
 asdf plugin-add python
 asdf plugin-add node
 asdf plugin-add elixir
@@ -98,8 +96,9 @@ pip3 install --user neovim
 echo ".cfg" >> .gitignore
 git clone --bare https://github.com/outkine/.dotfiles $HOME/.cfg
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-config checkout
+config checkout --force
 config config --local status.showUntrackedFiles no
+xrdb .Xresources
 
 
 # .mozilla/firefox/.../chrome/userChrome.css
