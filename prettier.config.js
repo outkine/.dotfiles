@@ -9,14 +9,14 @@ module.exports = {
     "semi": false,
     "parser": "babel",
     "arrowParens": "always",
-	  "overrides": [
-		      {
-			            "files": "*.vue",
-			            "options": {
-					            "parser": "vue"
-					          }
-			          }
-		    ]
+    "overrides": [
+  {
+		"files": "*.vue",
+		"options": {
+				"parser": "vue"
+			      }
+	      }
+]
 
 
 }

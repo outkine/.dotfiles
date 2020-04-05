@@ -48,8 +48,6 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-bindsym $mod+Mod1+l exec ~/.config/i3/lock.sh ~/.config/i3/lock.png
-
 # split in horizontal orientation
 # bindsym $mod+b split h
 
@@ -76,28 +74,28 @@ bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+F1 workspace 1
+bindsym $mod+F2 workspace 2
+bindsym $mod+F3 workspace 3
+bindsym $mod+F4 workspace 4
+bindsym $mod+F5 workspace 5
+bindsym $mod+F6 workspace 6
+bindsym $mod+F7 workspace 7
+bindsym $mod+F8 workspace 8
+bindsym $mod+F9 workspace 9
+bindsym $mod+F10 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+F1 move container to workspace 1
+bindsym $mod+Shift+F2 move container to workspace 2
+bindsym $mod+Shift+F3 move container to workspace 3
+bindsym $mod+Shift+F4 move container to workspace 4
+bindsym $mod+Shift+F5 move container to workspace 5
+bindsym $mod+Shift+F6 move container to workspace 6
+bindsym $mod+Shift+F7 move container to workspace 7
+bindsym $mod+Shift+F8 move container to workspace 8
+bindsym $mod+Shift+F9 move container to workspace 9
+bindsym $mod+Shift+F10 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -120,6 +118,13 @@ bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym --release Print exec gnome-screenshot -i
+bindsym XF86Search exec "systemctl suspend"
+bindsym Control+XF86Search exec "systemctl reboot"
+
+
+
+bindsym $mod+m exec keyboard_fix
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -197,18 +202,22 @@ exec --no-startup-id gnome-pomodoro
 
 ## other
 
-exec_always --no-startup-id xsetroot -solid "#000000"
-# exec --no-startup-id xautolock -detectsleep \
-#  -time 20 -locker "~/.config/i3/lock.sh ~/.config/i3/lock.png" \
+# exec_always --no-startup-id xsetroot -solid "#000000"
+#  exec --no-startup-id xautolock -detectsleep \
+#  -time 20 -locker i3lock \
 #  -notify 30 \
 #  -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
-exec xss-lock "~/.config/i3/lock.sh ~/.config/i3/lock.png"
+
+#-time 20 -locker "~/.config/i3/lock.sh ~/.config/i3/lock.png" \
+#exec xss-lock "~/.config/i3/lock.sh ~/.config/i3/lock.png"
+exec xss-lock i3lock
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec_always --no-startup-id xset r rate 150 150
 # exec_always feh --bg-scale ~/.config/background.jpg
 exec_always --no-startup-id localctl set-keymap us
-exec_always --no-startup-id setxkbmap -layout us,ru
-exec_always --no-startup-id setxkbmap -option 'grp:alt_shift_toggle'
+exec_always --no-startup-id setxkbmap -layout "us,ru" -variant "altgr-intl," -option 'grp:'
 exec --no-startup-id bash ~/.bin/fix_dbus
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+bindsym $mod+n exec xkb-switch -n
 # exec --no-startup-id redshift
+# exec_always shutdown -h 20:00

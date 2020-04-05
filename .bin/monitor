@@ -1,1 +1,1 @@
-xrandr --output HDMI-1 --above eDP-1 --mode 2560x1440 --output eDP-1 --primary --output DP-2 --mode 1600x1200 --right-of HDMI-1
+xrandr --output HDMI1 --above eDP1 --mode 2560x1440 --output eDP1 --primary --output DP2 --mode 1600x1200 --right-of HDMI1

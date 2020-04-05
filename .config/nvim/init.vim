@@ -49,7 +49,8 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ocaml': ['merlin'],
 \   'reason': ['merlin'],
-\   'elixir': ['elixir-ls', 'credo']
+\   'elixir': ['elixir-ls', 'credo'],
+\   'haskell': ['hdevtools']
 \}
 
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
@@ -61,7 +62,9 @@ let g:ale_fixers = {
 \   'vue': ['prettier', 'eslint'],
 \   'elixir': ['mix_format'],
 \   'reason': ['refmt'],
-\   'ocaml': ['ocamlformat']
+\   'ocaml': ['ocamlformat'],
+\   'haskell': ['hfmt'],
+\   'rust': ['rustfmt'],
 \}
 
 """
@@ -203,11 +206,15 @@ Plug 'ron89/thesaurus_query.vim'
 let g:tq_enabled_backends=["woxikon_de","jeck_ru","thesaurus_com","openoffice_en","mthesaur_txt"]
 let g:tq_python_version = 3
 
+" floobits
+" Plug 'Floobits/floobits-vim'
+
 """
 """ Language support
 """
 Plug 'sheerun/vim-polyglot'
 Plug 'pedrohdz/vim-yaml-folds'
+Plug 'lervag/vimtex'
 " https://github.com/posva/vim-vue/issues/72#issuecomment-398732170
 " Make vue syntax faster
 let g:vue_disable_pre_processors=1
@@ -219,6 +226,68 @@ au BufNewFile,BufRead *.vue setf vue
 
 " Plug 'slashmili/alchemist.vim'
 Plug 'reasonml-editor/vim-reason-plus'
+
+" Haskell
+Plug 'Twinside/vim-hoogle'
+Plug 'eagletmt/neco-ghc'
+" Plug 'bitc/vim-hdevtools'
+" Plug 'eagletmt/ghcmod-vim'
+" Plug 'parsonsmatt/intero-neovim'
+
+"""
+""" Autocomplete
+"""
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length = 2
+
+" Use tab to cycle through completions
+Plug 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+" Merlin
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.ocaml = '[.\w]+'
+let g:deoplete#omni#input_patterns.reason = '[.\w]+'
+let g:deoplete#file#enable_buffer_path = 1
+
+" Elm
+" Plug 'pbogut/deoplete-elm'
+" let g:deoplete#omni#functions = {}
+" let g:deoplete#sources = {}
+" let g:deoplete#sources._ = ['file', 'neosnippet']
+" let g:deoplete#omni#functions.elm = ['elm#Complete']
+" let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
+" let g:deoplete#sources.elm = ['omni'] + g:deoplete#sources._
+
+" Latex
+"
+  " This is new style
+
+  " This is old style (deprecated)
+  " if !exists('g:deoplete#omni#input_patterns')
+  "     let g:deoplete#omni#input_patterns = {}
+  " endif
+  " let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
+
+"""
+""" Status bar
+"""
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"let g:airline_powerline_fonts = 0
+"let g:airline_theme='onedark'
+
 
 """
 """ Theme
@@ -244,6 +313,9 @@ set indentexpr=""
 call plug#end()
 colorscheme snazzy
 
+  call deoplete#custom#var('omni', 'input_patterns', {
+          \ 'tex': g:vimtex#re#deoplete
+          \})
 """
 """ FASD
 """
@@ -279,10 +351,7 @@ nnoremap <silent> <Leader>e :FASD<CR>
 """
 """ WordProcessor mode
 """
-func! WordProcessor()
-  " movement changes
-  map j gj
-  map k gk
+func! WordProcessor() " movement changes map j gj map k gk
   " formatting text
   setlocal formatoptions=1
   set formatprg=par
@@ -337,3 +406,6 @@ cabbr <expr> %% expand('%:p:h')
 
 " select paste
 nnoremap <expr> gV    "`[".getregtype(v:register)[0]."`]"
+
+" redo
+map U :redo<CR>

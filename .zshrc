@@ -189,7 +189,10 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 fpath=('~/apps/git-subrepo/share/zsh-completion' $fpath)
 
 # anaconda
-# source /home/anton/anaconda3/etc/profile.d/conda.sh
+source /opt/anaconda/bin/activate
+
+# fix anaconda's python taking precedence of system python
+export PATH=/usr/bin:$PATH
 
 # mv include hidden files
 setopt dotglob
@@ -200,3 +203,12 @@ eval "$(hub alias -s)"
 # xclip
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
+
+# scala sbt-web
+# https://www.playframework.com/documentation/2.7.x/AssetsOverview
+export SBT_OPTS="-Dsbt.jse.engineType=Node"
+
+source /home/anton/.config/broot/launcher/bash/br
+
+# Rust
+export PATH=$HOME/.cargo/bin:$PATH

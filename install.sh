@@ -116,6 +116,7 @@ ui.track_notifications_enabled=false
 # install https://github.com/JakeBecker/elixir-ls into ~/.language-servers/elixir-ls-release
 
 # get Documents and fonts from mega.nz
+# https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/
 
 # copy .mozilla and thunderbird over usb
 # sudo mount /dev/sd... /mnt
