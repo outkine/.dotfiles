@@ -128,3 +128,12 @@ ui.track_notifications_enabled=false
 # rm -rf ~/.thunderbird
 # sudo tar xzf /mnt/thunderbird.tar.gz > ~/.thunderbird
 
+# add crontab
+# user notification
+crontab -e
+# 55 * * * * eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)"; XDG_RUNTIME_DIR=/run/user/$(id -u) DISPLAY=:0 /usr/bin/notify-send "SLEEPING SOON"
+
+# system suspend
+sudo crontab -e
+# 0 * * * * /bin/systemctl suspend
+
