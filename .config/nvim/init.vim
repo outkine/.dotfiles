@@ -1,3 +1,12 @@
+" Bootstrap Plug
+let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
+if !filereadable(autoload_plug_path)
+  silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs
+      \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+unlet autoload_plug_path
+
 set encoding=UTF-8
 call plug#begin()
 
@@ -126,7 +135,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 2
 
 " Use tab to cycle through completions
 Plug 'ervandew/supertab'
@@ -209,85 +217,6 @@ let g:tq_python_version = 3
 " floobits
 " Plug 'Floobits/floobits-vim'
 
-"""
-""" Language support
-"""
-Plug 'sheerun/vim-polyglot'
-Plug 'pedrohdz/vim-yaml-folds'
-Plug 'lervag/vimtex'
-" https://github.com/posva/vim-vue/issues/72#issuecomment-398732170
-" Make vue syntax faster
-let g:vue_disable_pre_processors=1
-" Fix highlighting
-autocmd FileType vue syntax sync fromstart
-au BufNewFile,BufRead *.vue setf vue
-
-" Plug 'elmcast/elm-vim'
-
-" Plug 'slashmili/alchemist.vim'
-Plug 'reasonml-editor/vim-reason-plus'
-
-" Haskell
-Plug 'Twinside/vim-hoogle'
-Plug 'eagletmt/neco-ghc'
-" Plug 'bitc/vim-hdevtools'
-" Plug 'eagletmt/ghcmod-vim'
-" Plug 'parsonsmatt/intero-neovim'
-
-"""
-""" Autocomplete
-"""
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 2
-
-" Use tab to cycle through completions
-Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-
-" Merlin
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.ocaml = '[.\w]+'
-let g:deoplete#omni#input_patterns.reason = '[.\w]+'
-let g:deoplete#file#enable_buffer_path = 1
-
-" Elm
-" Plug 'pbogut/deoplete-elm'
-" let g:deoplete#omni#functions = {}
-" let g:deoplete#sources = {}
-" let g:deoplete#sources._ = ['file', 'neosnippet']
-" let g:deoplete#omni#functions.elm = ['elm#Complete']
-" let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
-" let g:deoplete#sources.elm = ['omni'] + g:deoplete#sources._
-
-" Latex
-"
-  " This is new style
-
-  " This is old style (deprecated)
-  " if !exists('g:deoplete#omni#input_patterns')
-  "     let g:deoplete#omni#input_patterns = {}
-  " endif
-  " let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-
-
-"""
-""" Status bar
-"""
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"let g:airline_powerline_fonts = 0
-"let g:airline_theme='onedark'
-
 
 """
 """ Theme
@@ -313,9 +242,6 @@ set indentexpr=""
 call plug#end()
 colorscheme snazzy
 
-  call deoplete#custom#var('omni', 'input_patterns', {
-          \ 'tex': g:vimtex#re#deoplete
-          \})
 """
 """ FASD
 """
