@@ -86,10 +86,10 @@ git config --global credential.helper store
 # pacman -Qqen > pkglist.txt
 # and
 # pacman -Qqem > extpkglist.txt
-sudo pacman -S --needed $(comm -12 <(pacman -Slq|sort) <(sort pkglist.txt) )
-yay -S --noedit --noconfirm --needed $(cat extpkglist.txt)
+sudo pacman --noconfirm -S --needed $(comm -12 <(pacman -Slq|sort) <(sort pkglist.txt) ) && yay -S --noconfirm --needed $(cat extpkglist.txt)
 
 ssh-keygen
+chsh -s /bin/zsh
 sudo chsh -s /bin/zsh
 sudo lux
 systemctl --user enable redshift
@@ -137,9 +137,9 @@ ui.track_notifications_enabled=false
 # sudo tar czf /mnt/thunderbird.tar.gz ~/.thunderbird
 # sudo tar czf /mnt/mozilla.tar.gz ~/.mozilla
 rm -rf ~/.mozilla
-sudo tar xzf /mnt/mozilla.tar.gz > ~/.mozilla
+sudo tar xzf /mnt/mozilla.tar.gz
 rm -rf ~/.thunderbird
-sudo tar xzf /mnt/thunderbird.tar.gz > ~/.thunderbird
+sudo tar xzf /mnt/thunderbird.tar.gz
 
 
 ### CRON
@@ -150,12 +150,6 @@ sudo crontab -e
 # user notification
 crontab -e
 # 55 * * * * eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)"; XDG_RUNTIME_DIR=/run/user/$(id -u) DISPLAY=:0 /usr/bin/notify-send "SLEEPING SOON"
-
-
-### OTHER FILES
-sudo curl https://pastebin.com/raw/GuvCxGek > /etc/X11/xorg.conf.d/20-intel.conf
-sudo curl https://pastebin.com/KXbNYPSm >  /etc/X11/xorg.conf.d/30-touchpad.conf
-sudo curl https://pastebin.com/5A3iCNCC > /etc/systemd/logind.conf
 
 
 ### FONTS
@@ -170,7 +164,14 @@ sudo nvim /etc/profile.d/freetype2.sh
 # Uncomment the desired mode at the end:
 # export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 
-sudo curl https://pastebin.com/raw/Dc9U71gX > /etc/fonts/local.conf
+
+### OTHER FILES
+sudo su # must be done as root
+curl https://pastebin.com/raw/Dc9U71gX > /etc/fonts/local.conf
+curl https://pastebin.com/raw/GuvCxGek > /etc/X11/xorg.conf.d/20-intel.conf
+curl https://pastebin.com/KXbNYPSm >  /etc/X11/xorg.conf.d/30-touchpad.conf
+curl https://pastebin.com/5A3iCNCC > /etc/systemd/logind.conf
 
 
-### ALSO COPY: ZSH HISTORY
+
+### ALSO COPY: ZSH HISTORY and chown it
