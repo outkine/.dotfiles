@@ -24,31 +24,31 @@ URxvt*underlineColor: yellow
 URxvt*externalBorder:
 URxvt*borderColor: black
 
-!URxvt*font: xft:Meslo LG M for Powerline:autohint=true:pixelsize=12
-URxvt*font: xft:Roboto Mono Medium for Powerline:autohint=true:pixelsize=20,xft:Symbola,xft:Noto Emoji:minspace=False
+URxvt*font: xft:Menlo for Powerline:autohint=true:pixelsize=20,xft:Symbola,xft:Noto Emoji:minspace=False
 URxvt*saveLines: 5000
 URxvt*buffered: true
 URxvt*hold: false
 URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
-URxvt.perl-lib:            $HOME/.config/urxvt/ext/
-URxvt*perl-ext-common:        default,matcher,font-size
+!URxvt.perl-lib:            $HOME/.config/urxvt/ext/
+URxvt*perl-ext-common:        default,matcher,selection-to-clipboard
 URxvt*url-launcher:        /usr/bin/firefox
 URxvt*matcher.button:        1
 URxvt*geometry: 100x30
 
-URxvt*keysym.Shift-Control-V: eval:paste_clipboard
-URxvt*keysym.Shift-Control-C: eval:selection_to_clipboard
-URxvt.keysym.C-Up:     font-size:increase
-URxvt.keysym.C-Down:   font-size:decrease
-!URxvt*iso14755_52: False
+!URxvt*keysym.Shift-Control-V: eval:paste_clipboard
+!URxvt*keysym.Shift-Control-C: eval:selection_to_clipboard
+!URxvt.keysym.C-Up:     font-size:increase
+!URxvt.keysym.C-Down:   font-size:decrease
+URxvt*iso14755_52: false
 
 !URxvt.keysym.C-V: perl:paste_clipboard
 !URxvt.keysym.C-C: eval:selection-to-clipboard
 !URxvt.keysym.C-V: selection-to-clipboard
-!URxvt.keysym.C-C: perl:clipboard:copy
-URxvt*iso14755: False
-!perl:clipboard:paste
-
+URxvt*iso14755: false
+URxvt.clipboard.autocopy: true
+URxvt.keysym.C-C: perl:clipboard:copy
+!URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.C-V: eval:paste_clipboard
 
 urxvt*foreground: white
 urxvt*background: black

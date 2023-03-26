@@ -1,2 +1,2 @@
 xset r rate 150 100
-xmodmap ~/.bin/xdb_script
+xmodmap ~/.bin/xdb_script 2> /dev/null

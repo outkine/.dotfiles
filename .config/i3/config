@@ -113,7 +113,7 @@ bindsym XF86AudioRaiseVolume exec "amixer set Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer set Master 5%-"
 bindsym Control+XF86AudioLowerVolume exec "amixer set Master 1%"
 bindsym Control+XF86AudioRaiseVolume exec "amixer set Master 100%"
-bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioMute exec "amixer set Master toggle"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 bindsym XF86AudioPlay exec "playerctl play-pause"
@@ -123,8 +123,9 @@ bindsym Control+XF86Search exec "systemctl reboot"
 
 
 
-bindsym $mod+m exec keyboard_fix
-
+bindsym $mod+m exec bash -c "xset r rate 150 100 && xmodmap ~/.bin/xdb_script 2> /dev/null"
+#bindsym $mod+o exec rofi -modi emoji -show emoji
+bindsym $mod+o exec $HOME/.bin/emoji-rofi
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -195,9 +196,9 @@ hide_edge_borders smart
 ## applets
 
 exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id emojione-picker
-exec --no-startup-id gnome-pomodoro
+#exec --no-startup-id blueman-applet
+#exec --no-startup-id emojione-picker
+#exec --no-startup-id gnome-pomodoro
 
 
 ## other
@@ -210,14 +211,14 @@ exec --no-startup-id gnome-pomodoro
 
 #-time 20 -locker "~/.config/i3/lock.sh ~/.config/i3/lock.png" \
 #exec xss-lock "~/.config/i3/lock.sh ~/.config/i3/lock.png"
-exec xss-lock i3lock
+# exec xss-lock i3lock
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
-exec_always --no-startup-id xset r rate 150 150
-# exec_always feh --bg-scale ~/.config/background.jpg
+exec_always --no-startup-id xset r rate 150 200
 exec_always --no-startup-id localctl set-keymap us
 exec_always --no-startup-id setxkbmap -layout "us,ru" -variant "altgr-intl," -option 'grp:'
 exec --no-startup-id bash ~/.bin/fix_dbus
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 bindsym $mod+n exec xkb-switch -n
+#exec feh --bg-fill ~/ena.png
 # exec --no-startup-id redshift
 # exec_always shutdown -h 20:00

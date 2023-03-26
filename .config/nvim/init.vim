@@ -74,6 +74,7 @@ let g:ale_fixers = {
 \   'ocaml': ['ocamlformat'],
 \   'haskell': ['hfmt'],
 \   'rust': ['rustfmt'],
+\   'c': ['clang-format'],
 \}
 
 """
@@ -95,7 +96,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 """
 """ Git
 """
-Plug 'tpope/vim-fugitive'  " git commands
+"Plug 'tpope/vim-fugitive'  " git commands
 Plug 'airblade/vim-gitgutter'  " git diff in gutter
 
 """
@@ -142,12 +143,12 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " Merlin
-" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-" execute "set rtp+=" . g:opamshare . "/merlin/vim"
-" let g:deoplete#omni#input_patterns = {}
-" let g:deoplete#omni#input_patterns.ocaml = '[.\w]+'
-" let g:deoplete#omni#input_patterns.reason = '[.\w]+'
-" let g:deoplete#file#enable_buffer_path = 1
+"let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+"execute "set rtp+=" . g:opamshare . "/merlin/vim"
+"let g:deoplete#omni#input_patterns = {}
+"let g:deoplete#omni#input_patterns.ocaml = '[.\w]+'
+"let g:deoplete#omni#input_patterns.reason = '[.\w]+'
+"let g:deoplete#file#enable_buffer_path = 1
 
 " Elm
 " Plug 'pbogut/deoplete-elm'
@@ -184,6 +185,39 @@ nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 " Plug 'ryanoasis/vim-devicons'
+
+
+"""
+""" Lang Support
+"""
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'JamshedVesuna/vim-markdown-preview'
+
+"""
+""" Latex Support
+"""
+"Plug 'lervag/vimtex'
+
+"let g:tex_flavor = 'latex'
+
+" Viewer options: One may configure the viewer either by specifying a built-in
+" " viewer method:
+" let g:vimtex_view_method = 'zathura'
+
+" " Or with a generic interface:
+" let g:vimtex_view_general_viewer = 'okular'
+" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+
+" " VimTeX uses latexmk as the default compiler backend. If you use it, which is
+" " strongly recommended, you probably don't need to configure anything. If you
+" " want another compiler backend, you can change it as follows. The list of
+" " supported backends and further explanation is provided in the documentation,
+" " see ":help vimtex-compiler".
+" let g:vimtex_compiler_method = 'latexrun'
+
+" " Most VimTeX mappings rely on localleader and this can be changed with the
+" " following line. The default is usually fine and is the symbol "\".
+" let maplocalleader = ","
 
 """
 """ Misc Plugins
@@ -226,6 +260,7 @@ Plug 'connorholyday/vim-snazzy'
 """
 """ Indentation
 """
+set autoindent
 " automatic indent detection
 Plug 'tpope/vim-sleuth'
 filetype plugin indent on
@@ -304,7 +339,7 @@ map k gk
 set nopaste
 
 " line numbering mode
-set number relativenumber
+set number "relativenumber
 nmap <F2> :so ~/.config/nvim/init.vim<CR><CR><CR>
 nmap <leader>n :tabnew
 
@@ -335,3 +370,12 @@ nnoremap <expr> gV    "`[".getregtype(v:register)[0]."`]"
 
 " redo
 map U :redo<CR>
+
+" stop column width from increasing from lint indicators
+set signcolumn=yes:1
+
+" Zoom
+noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>
+noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>
+inoremap <C-ScrollWheelUp> <Esc>:call AdjustFontSize(1)<CR>a
+inoremap <C-ScrollWheelDown> <Esc>:call AdjustFontSize(-1)<CR>a

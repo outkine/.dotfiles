@@ -92,8 +92,10 @@ ssh-keygen
 chsh -s /bin/zsh
 sudo chsh -s /bin/zsh
 sudo lux
+sudo protonvpn init
 systemctl --user enable redshift
 pip3 install --user neovim
+rustup default stable
 
 sudo systemctl enable org.cups.cupsd
 sudo systemctl enable lightdm
@@ -173,5 +175,15 @@ curl https://pastebin.com/KXbNYPSm >  /etc/X11/xorg.conf.d/30-touchpad.conf
 curl https://pastebin.com/5A3iCNCC > /etc/systemd/logind.conf
 
 
+### HOSTS FILE
+# copy from https://someonewhocares.org/hosts/
+
 
 ### ALSO COPY: ZSH HISTORY and chown it
+
+# Add PSQL to Pacman ignore group
+# /etc/pacman.conf
+IgnorePkg = postgresql postgresql-libs
+
+
+# Emoji https://www.reddit.com/r/unixporn/comments/c6i0f6/i3_custom_emoji_selector_menu_with_rofi/

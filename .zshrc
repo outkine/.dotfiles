@@ -1,22 +1,34 @@
-# ======== ZPlug
-if [[ ! -f ~/.zplug/init.zsh ]]; then
-	git clone https://github.com/b4b4r07/zplug ~/.zplug
+# ======== zplugin
+# if [[ ! -f ~/.zplugin/zplugin.zsh ]]; then
+#   git clone https://github.com/akatrevorjay/zplugin "${HOME}/.zplugin"
+# fi
+
+# source "${HOME}/.zplugin/zplugin.zsh"
+
+# zplugin load 'zsh-users/zsh-syntax-highlighting'
+# zplugin load 'zsh-users/zsh-history-substring-search'
+# zplugin load 'zsh-users/zsh-autosuggestions'
+# zplugin load 'zsh-users/zsh-completions'
+# zplugin load 'geometry-zsh/geometry'
+
+# ======== zgen
+if [[ ! -f ~/.zgen/zgen.zsh ]]; then
+  git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 fi
 
-source ~/.zplug/init.zsh
+source "${HOME}/.zgen/zgen.zsh"
 
-zplug 'zsh-users/zsh-syntax-highlighting'
-zplug 'zsh-users/zsh-history-substring-search'
-zplug 'zsh-users/zsh-autosuggestions'
-zplug 'zsh-users/zsh-completions'
-zplug "lukechilds/zsh-better-npm-completion", defer:2
-zplug 'geometry-zsh/geometry', as:theme
+# if the init scipt doesn't exist
+if ! zgen saved; then
+  zgen load 'zsh-users/zsh-syntax-highlighting'
+  zgen load 'zsh-users/zsh-history-substring-search'
+  zgen load 'zsh-users/zsh-autosuggestions'
+  zgen load 'zsh-users/zsh-completions'
+  # zgen load 'lukechilds/zsh-better-npm-completion'
+  zgen load 'geometry-zsh/geometry'
 
-if ! zplug check --verbose; then
-	echo; zplug install
+  zgen save
 fi
-zplug load
-
 
 # ======== Options
 # ===== Basics
@@ -116,7 +128,7 @@ zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 
 # asdf (elixir version manager)
 . $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# . $HOME/.asdf/completions/asdf.bash
 
 # ======== Exports
 SAVEHIST=10000000000000000
@@ -180,7 +192,7 @@ _virtualenv_auto_activate() {
 precmd() { _virtualenv_auto_activate }
 
 # OPAM configuration
-. /home/anton/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+#[[ ! -r /home/anton/.opam/opam-init/init.zsh ]] || source /home/anton/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 # git dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -189,7 +201,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 fpath=('~/apps/git-subrepo/share/zsh-completion' $fpath)
 
 # anaconda
-source /opt/anaconda/bin/activate
+# source /opt/anaconda/bin/activate
 
 # fix anaconda's python taking precedence of system python
 export PATH=/usr/bin:$PATH
@@ -208,7 +220,22 @@ alias getclip="xclip -selection c -o"
 # https://www.playframework.com/documentation/2.7.x/AssetsOverview
 export SBT_OPTS="-Dsbt.jse.engineType=Node"
 
-source /home/anton/.config/broot/launcher/bash/br
-
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH
+
+# Wasienv
+export WASIENV_DIR="/home/anton/.wasienv"
+[ -s "$WASIENV_DIR/wasienv.sh" ] && source "$WASIENV_DIR/wasienv.sh"
+
+# Wasmer
+export WASMER_DIR="/home/anton/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+# Add default node to path
+# export PATH=~/.nvm/versions/node/v12.16.1/bin:$PATH
+
+# Load NVM
+export NVM_DIR=~/.nvm
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
+
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
